@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		075A8165138A293A00B37536 /* ToastStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8164138A293A00B37536 /* ToastStyle.m */; };
-		075A8168138A29C600B37536 /* ToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8167138A29C600B37536 /* ToastManager.m */; };
-		075A816B138A29E900B37536 /* ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A816A138A29E900B37536 /* ToastMessage.m */; };
+		075A8305138A384100B37536 /* ToastStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8300138A384100B37536 /* ToastStyle.m */; };
+		075A8306138A384100B37536 /* ToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8302138A384100B37536 /* ToastManager.m */; };
+		075A8307138A384100B37536 /* ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8303138A384100B37536 /* ToastMessage.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -178,12 +178,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		075A8163138A293A00B37536 /* ToastStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastStyle.h; sourceTree = "<group>"; };
-		075A8164138A293A00B37536 /* ToastStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastStyle.m; sourceTree = "<group>"; };
-		075A8166138A29C600B37536 /* ToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastManager.h; sourceTree = "<group>"; };
-		075A8167138A29C600B37536 /* ToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastManager.m; sourceTree = "<group>"; };
-		075A8169138A29E900B37536 /* ToastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastMessage.h; sourceTree = "<group>"; };
-		075A816A138A29E900B37536 /* ToastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastMessage.m; sourceTree = "<group>"; };
+		075A82FF138A384100B37536 /* ToastStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToastStyle.h; path = Classes/ToastStyle.h; sourceTree = "<group>"; };
+		075A8300138A384100B37536 /* ToastStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToastStyle.m; path = Classes/ToastStyle.m; sourceTree = "<group>"; };
+		075A8301138A384100B37536 /* ToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToastManager.h; path = Classes/ToastManager.h; sourceTree = "<group>"; };
+		075A8302138A384100B37536 /* ToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToastManager.m; path = Classes/ToastManager.m; sourceTree = "<group>"; };
+		075A8303138A384100B37536 /* ToastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToastMessage.m; path = Classes/ToastMessage.m; sourceTree = "<group>"; };
+		075A8304138A384100B37536 /* ToastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToastMessage.h; path = Classes/ToastMessage.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -231,23 +231,33 @@
 		075A8162138A292F00B37536 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
-				075A8163138A293A00B37536 /* ToastStyle.h */,
-				075A8164138A293A00B37536 /* ToastStyle.m */,
-				075A8166138A29C600B37536 /* ToastManager.h */,
-				075A8167138A29C600B37536 /* ToastManager.m */,
-				075A8169138A29E900B37536 /* ToastMessage.h */,
-				075A816A138A29E900B37536 /* ToastMessage.m */,
+				075A82FF138A384100B37536 /* ToastStyle.h */,
+				075A8300138A384100B37536 /* ToastStyle.m */,
+				075A8301138A384100B37536 /* ToastManager.h */,
+				075A8302138A384100B37536 /* ToastManager.m */,
+				075A8303138A384100B37536 /* ToastMessage.m */,
+				075A8304138A384100B37536 /* ToastMessage.h */,
 			);
 			name = Toast;
+			path = ..;
 			sourceTree = "<group>";
 		};
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		075A830A138A384D00B37536 /* App Scaffolding */ = {
 			isa = PBXGroup;
 			children = (
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
+			);
+			name = "App Scaffolding";
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				075A830A138A384D00B37536 /* App Scaffolding */,
+				075A8162138A292F00B37536 /* Toast */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -263,7 +273,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				075A8162138A292F00B37536 /* Toast */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -574,9 +583,9 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
-				075A8165138A293A00B37536 /* ToastStyle.m in Sources */,
-				075A8168138A29C600B37536 /* ToastManager.m in Sources */,
-				075A816B138A29E900B37536 /* ToastMessage.m in Sources */,
+				075A8305138A384100B37536 /* ToastStyle.m in Sources */,
+				075A8306138A384100B37536 /* ToastManager.m in Sources */,
+				075A8307138A384100B37536 /* ToastMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
