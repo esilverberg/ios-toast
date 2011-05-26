@@ -47,7 +47,23 @@
 	[_postButton setEnabled:YES];
 	_postButton.frame = CGRectMake(10, _editor.frame.origin.y + _editor.frame.size.height + 10, 100, 40);
 	[self.view addSubview:_postButton];
-	
+
+	_stickyPostButton = [[TTButton buttonWithStyle:@"textBarPostButton:"
+									   title:NSLocalizedString(@"Sticky", @"")] retain];
+	[_stickyPostButton addTarget:self action:@selector(stickyPostButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[_stickyPostButton setEnabled:YES];
+	_stickyPostButton.frame = CGRectMake(2*10 + _postButton.frame.size.width, 
+										 _editor.frame.origin.y + _editor.frame.size.height + 10, 100, 40);
+	[self.view addSubview:_stickyPostButton];
+
+	_stickyClearButton = [[TTButton buttonWithStyle:@"textBarPostButton:"
+											 title:NSLocalizedString(@"Clear", @"")] retain];
+	[_stickyClearButton addTarget:self action:@selector(stickyClearButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[_stickyClearButton setEnabled:YES];
+	_stickyClearButton.frame = CGRectMake(3*10 + _postButton.frame.size.width + _stickyPostButton.frame.size.width, 
+										 _editor.frame.origin.y + _editor.frame.size.height + 10, 100, 40);
+	[self.view addSubview:_stickyClearButton];
+
 	self.view.autoresizesSubviews = YES;
 	
 }	
@@ -55,6 +71,8 @@
 {
 	TT_RELEASE_SAFELY(_editor);
 	TT_RELEASE_SAFELY(_postButton);
+	TT_RELEASE_SAFELY(_stickyPostButton);
+	TT_RELEASE_SAFELY(_stickyClearButton);
 	TT_RELEASE_SAFELY(_toastManager);
 }
 
@@ -66,8 +84,19 @@
 - (void)alertButtonClicked:(id)sender
 {
 	NSString *text = [_editor text];
-	[_toastManager alert:text];
+	[_toastManager alert:text sticky:NO code:0];
 	[_editor resignFirstResponder];
 }
 
+- (void) stickyPostButtonClicked:(id)sender
+{
+	NSString *text = [_editor text];
+	[_toastManager alert:text sticky:YES code:1];
+	[_editor resignFirstResponder];
+	
+}
+- (void) stickyClearButtonClicked:(id)sender
+{
+	[_toastManager toastClose:1];
+}
 @end

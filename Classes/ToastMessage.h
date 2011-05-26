@@ -25,11 +25,13 @@
 	TTView*                   _bezelView;
 	UILabel*                  _label;
 	TTButton *				  _closeButton;
+	UIActivityIndicatorView * _activityIndicator;
 	id _delegate;
 }
 
 @property (nonatomic, assign)   NSString* text;
 @property (nonatomic, assign) id<ToastCloseDelegate> delegate;
+@property (nonatomic) BOOL hidesCloseButton;
 
 - (CGSize) preferredSize;
 @end

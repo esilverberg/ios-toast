@@ -59,6 +59,10 @@ static CGFloat kMaxWidth         = 320;
 		[self addSubview:_bezelView];
 		[_bezelView addSubview:_label];
 		[self addSubview:_closeButton];
+		
+		_activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
+		_activityIndicator.hidden = YES;
+		[self addSubview:_activityIndicator];
 	}
 	return self;
 }
@@ -123,8 +127,19 @@ static CGFloat kMaxWidth         = 320;
 							  textWidth, textSize.height);	
 	
 	NSLog(@"Label frame is %@",NSStringFromCGRect(_label.frame));
-	
-	_closeButton.frame = CGRectMake(bezelWidth - _closeButton.width - margin, (bezelHeight - _closeButton.height)/2.0, _closeButton.width, _closeButton.height);
+
+	if (!_activityIndicator.hidden)
+	{
+		[_activityIndicator sizeToFit];
+		_activityIndicator.frame = CGRectMake(bezelWidth - _activityIndicator.width - margin, 
+											  (bezelHeight - _activityIndicator.height)/2.0, 
+											  _activityIndicator.width, _activityIndicator.height);;
+		[_activityIndicator startAnimating];
+	}
+	else
+	{
+		_closeButton.frame = CGRectMake(bezelWidth - _closeButton.width - margin, (bezelHeight - _closeButton.height)/2.0, _closeButton.width, _closeButton.height);;
+	}
 	NSLog(@"Close frame is %@",NSStringFromCGRect(_closeButton.frame));
 }
 
@@ -148,6 +163,17 @@ static CGFloat kMaxWidth         = 320;
 - (void)setText:(NSString*)text {
 	_label.text = text;
 	[self setNeedsLayout];
+}
+
+- (BOOL) hidesCloseButton
+{
+	return _closeButton.hidden;
+}
+
+- (void) setHidesCloseButton:(BOOL)hide
+{
+	_closeButton.hidden = hide;
+	_activityIndicator.hidden = !hide;
 }
 
 @end

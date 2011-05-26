@@ -25,6 +25,8 @@
 @interface RootViewController : TTViewController <TTTextEditorDelegate> {
 	TTTextEditor *_editor;
 	TTButton *_postButton;
+	TTButton *_stickyPostButton;
+	TTButton *_stickyClearButton;
 	ToastManager *_toastManager;
 }
 
