@@ -135,6 +135,19 @@ static const double kFadeTime = 0.5;
 
 - (void)alert:(NSString*)message sticky:(BOOL)isSticky code:(NSInteger)alertCode
 {
+	// Ignore repeat sticky toasts
+	if (isSticky)
+	{
+		if (self.currentToast && self.currentToast.code == alertCode)
+			return;
+		
+		for (ToastMessageData *message in _messages)
+		{
+			if (message.code == alertCode)
+				return;
+		}
+	}
+	
 	ToastMessageData *data = [[[ToastMessageData alloc] init] autorelease];
 	data.message = message;
 	data.sticky = isSticky;

@@ -235,8 +235,8 @@
 				075A8300138A384100B37536 /* ToastStyle.m */,
 				075A8301138A384100B37536 /* ToastManager.h */,
 				075A8302138A384100B37536 /* ToastManager.m */,
-				075A8303138A384100B37536 /* ToastMessage.m */,
 				075A8304138A384100B37536 /* ToastMessage.h */,
+				075A8303138A384100B37536 /* ToastMessage.m */,
 			);
 			name = Toast;
 			path = ..;
