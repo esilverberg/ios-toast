@@ -24,29 +24,13 @@
 @class ToastMessageData;
 @interface ToastManager : NSObject <ToastCloseDelegate> {
 	NSMutableArray *_messages;
-	ToastMessage *_activeLabel;
-	ToastMessageData *_currentToast;
+	ToastMessage *_currentToast;
 	NSInteger _lastToastId;
 }
 
-@property (nonatomic, retain) ToastMessage *activeLabel;
-@property (nonatomic, retain) ToastMessageData *currentToast;
+@property (nonatomic, retain) ToastMessage *currentToast;
 
-- (void) alert:(NSString*)message sticky:(BOOL)isSticky code:(NSInteger)alertCode;
+- (void) alert:(NSString*)text sticky:(BOOL)isSticky code:(NSInteger)alertCode;
 - (void) toastClose:(NSInteger)alertCode;
 - (void) toastClose;
-@end
-
-@interface ToastMessageData : NSObject {
-	NSInteger toastId;
-	NSString *message;
-	NSInteger code;
-	BOOL sticky;
-}
-
-@property (nonatomic) NSInteger toastId;
-@property (nonatomic, retain) NSString *message;
-@property (nonatomic) NSInteger code;
-@property (nonatomic) BOOL sticky;
-
 @end

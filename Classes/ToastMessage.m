@@ -30,12 +30,15 @@ static CGFloat kMaxWidth         = 320;
 
 @implementation ToastMessage
 
+@synthesize toastId = _toastId;
+@synthesize code = _code;
 @synthesize delegate = _delegate;
 
 - (id)initWithFrame:(CGRect)frame {
 	
 	if (self = [super initWithFrame:frame]) {
 		self.autoresizesSubviews = YES;
+		self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 		_bezelView = [[TTView alloc] init];
 		_bezelView.backgroundColor = [UIColor clearColor];
 		_bezelView.style = TTSTYLE(blackBezel);
@@ -55,6 +58,7 @@ static CGFloat kMaxWidth         = 320;
 		_closeButton.font = [UIFont boldSystemFontOfSize:14];
 		[_closeButton sizeToFit];
 		[_closeButton addTarget:self action:@selector(closeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+		_closeButton.hidden = YES;
 		
 		[self addSubview:_bezelView];
 		[_bezelView addSubview:_label];
@@ -128,8 +132,9 @@ static CGFloat kMaxWidth         = 320;
 	
 	NSLog(@"Label frame is %@",NSStringFromCGRect(_label.frame));
 
-	if (!_activityIndicator.hidden)
+	if (_sticky)
 	{
+		_activityIndicator.hidden = NO;
 		[_activityIndicator sizeToFit];
 		_activityIndicator.frame = CGRectMake(bezelWidth - _activityIndicator.width - margin, 
 											  (bezelHeight - _activityIndicator.height)/2.0, 
@@ -138,6 +143,7 @@ static CGFloat kMaxWidth         = 320;
 	}
 	else
 	{
+		_closeButton.hidden = NO;
 		_closeButton.frame = CGRectMake(bezelWidth - _closeButton.width - margin, (bezelHeight - _closeButton.height)/2.0, _closeButton.width, _closeButton.height);;
 	}
 	NSLog(@"Close frame is %@",NSStringFromCGRect(_closeButton.frame));
@@ -165,15 +171,22 @@ static CGFloat kMaxWidth         = 320;
 	[self setNeedsLayout];
 }
 
-- (BOOL) hidesCloseButton
+- (void) setSticky:(BOOL)b
 {
-	return _closeButton.hidden;
+	_sticky = b;
+}
+- (BOOL) isSticky
+{
+	return _sticky;
 }
 
-- (void) setHidesCloseButton:(BOOL)hide
+- (void) setClosing:(BOOL)b
 {
-	_closeButton.hidden = hide;
-	_activityIndicator.hidden = !hide;
+	_closing = b;
+}
+- (BOOL) isClosing
+{
+	return _closing;
 }
 
 @end

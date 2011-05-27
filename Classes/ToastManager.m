@@ -25,23 +25,8 @@
 static const double kDisplayTime = 4.0;
 static const double kFadeTime = 0.5;
 
-@implementation ToastMessageData
-
-@synthesize toastId;
-@synthesize message;
-@synthesize code;
-@synthesize sticky;
-
-- (void) dealloc
-{
-	TT_RELEASE_SAFELY(message);
-	[super dealloc];
-}
-@end
-
 @implementation ToastManager
 
-@synthesize activeLabel = _activeLabel;
 @synthesize currentToast = _currentToast;
 
 - (id) init
@@ -56,7 +41,6 @@ static const double kFadeTime = 0.5;
 
 - (void) dealloc
 {
-	TT_RELEASE_SAFELY(_activeLabel);
 	TT_RELEASE_SAFELY(_messages);
 	TT_RELEASE_SAFELY(_currentToast);
 	[super dealloc];
@@ -74,29 +58,20 @@ static const double kFadeTime = 0.5;
 		}		
 		UIView *firstSubview = [[window subviews] objectAtIndex:0];
 		parentView = [[firstSubview subviews] objectAtIndex:0];
-		
-		ToastMessage* label = [[[ToastMessage alloc] initWithFrame:CGRectZero] autorelease];
-		label.delegate = self;
-		label.text = self.currentToast.message;
-		label.alpha = 0.0;
-		label.hidesCloseButton = self.currentToast.sticky;
-		
-		CGSize preferredSize = [label preferredSize];
-		label.frame = CGRectMake((parentView.width - preferredSize.width)/2.0, 
+				
+		CGSize preferredSize = [self.currentToast preferredSize];
+		self.currentToast.frame = CGRectMake((parentView.width - preferredSize.width)/2.0, 
 								 (parentView.height - preferredSize.height)/2.0,
 								 preferredSize.width,
 								 preferredSize.height);
-		label.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-		[parentView addSubview:label];
-		
-		self.activeLabel = label;
-		
+		[parentView addSubview:self.currentToast];
+				
 		// removeMessage or finishedFadingOut will do the release on this alloc
 		[UIView beginAnimations:nil context:self.currentToast];
 		[UIView setAnimationDuration:kFadeTime];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(finishedFadingIn:finished:context:)];
-		self.activeLabel.alpha = 1.0;
+		self.currentToast.alpha = 1.0;
 		[UIView commitAnimations];
 		
 		[_messages removeObjectAtIndex:0]; // remove from stack		
@@ -105,56 +80,58 @@ static const double kFadeTime = 0.5;
 
 - (void) finishedFadingIn:(NSString *)animationID finished:(BOOL)finished context:(void *)context
 {
-	ToastMessageData *message = (ToastMessageData*)context;
-	if (!message.sticky)
+	ToastMessage *message = (ToastMessage*)context;
+	if (!message.isSticky)
+	{
 		[self performSelector:@selector(removeMessage:) withObject:context afterDelay:kDisplayTime];
+	}
 }
 
 - (void) finishedFadingOut:(NSString *)animationID finished:(BOOL)finished context:(void *)context
 {	
-	[self.activeLabel removeFromSuperview];
-	self.activeLabel = nil;
-	self.currentToast = nil;
-	[self displayNextMessage];
+	ToastMessage *message = (ToastMessage*)context;
+	if (message == self.currentToast) // we want to do the pointer check
+	{
+		[message removeFromSuperview];
+		self.currentToast = nil;
+		[self displayNextMessage];
+	}
 }
 
 - (void) removeMessage:(void*)ctxTargetToast
 {
-	ToastMessageData *message = (ToastMessageData*)ctxTargetToast;
-	
-	if (self.currentToast.toastId == message.toastId)
+	ToastMessage *message = (ToastMessage*)ctxTargetToast;
+	if (!message.isClosing)
 	{
+		message.closing = YES;
 		[UIView beginAnimations:nil context:message];
 		[UIView setAnimationDuration:kFadeTime];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(finishedFadingOut:finished:context:)];
-		self.activeLabel.alpha = 0.0;
+		message.alpha = 0.0;
 		[UIView commitAnimations];
 	}
 }
 
-- (void)alert:(NSString*)message sticky:(BOOL)isSticky code:(NSInteger)alertCode
-{
-	// Ignore repeat sticky toasts
+- (void)alert:(NSString*)text sticky:(BOOL)isSticky code:(NSInteger)alertCode
+{	
 	if (isSticky)
 	{
 		if (self.currentToast && self.currentToast.code == alertCode)
 			return;
-		
-		for (ToastMessageData *message in _messages)
-		{
-			if (message.code == alertCode)
-				return;
-		}
+		for (ToastMessage *m in _messages)
+			if (m.code == alertCode) return;
 	}
 	
-	ToastMessageData *data = [[[ToastMessageData alloc] init] autorelease];
-	data.message = message;
-	data.sticky = isSticky;
-	data.code = alertCode;
-	data.toastId = _lastToastId++;
-	
-	[_messages addObject:data];
+	ToastMessage* message = [[[ToastMessage alloc] initWithFrame:CGRectZero] autorelease];
+	message.delegate = self;
+	message.text = text;
+	message.alpha = 0.0;
+	message.sticky = isSticky;
+	message.code = alertCode;
+	message.toastId = _lastToastId++;
+		
+	[_messages addObject:message];
 	[self displayNextMessage];
 }
 

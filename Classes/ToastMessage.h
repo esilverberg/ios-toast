@@ -22,6 +22,10 @@
 
 @protocol ToastCloseDelegate;
 @interface ToastMessage : UIView {
+	NSInteger				  _toastId;
+	NSInteger				  _code;
+	BOOL					  _sticky;
+	BOOL					  _closing;
 	TTView*                   _bezelView;
 	UILabel*                  _label;
 	TTButton *				  _closeButton;
@@ -29,9 +33,12 @@
 	id _delegate;
 }
 
+@property (nonatomic) NSInteger toastId;
+@property (nonatomic) NSInteger code;
+@property (nonatomic, getter=isSticky) BOOL sticky;
+@property (nonatomic, getter=isClosing) BOOL closing;
 @property (nonatomic, assign)   NSString* text;
 @property (nonatomic, assign) id<ToastCloseDelegate> delegate;
-@property (nonatomic) BOOL hidesCloseButton;
 
 - (CGSize) preferredSize;
 @end
