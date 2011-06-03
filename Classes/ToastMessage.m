@@ -49,14 +49,13 @@ static CGFloat kMaxWidth         = 320;
 		_label.backgroundColor = [UIColor clearColor];
 		_label.lineBreakMode = UILineBreakModeTailTruncation;
 		
-		_label.font = [UIFont systemFontOfSize:14];
+		_label.font = [UIFont systemFontOfSize:13];
 		_label.textColor = [UIColor whiteColor];
 		_label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
 		_label.shadowOffset = CGSizeMake(1, 1);
 		
-		_closeButton = [[TTButton buttonWithStyle:@"closeButton:" title:@"x"] retain];		
-		_closeButton.font = [UIFont boldSystemFontOfSize:14];
-		[_closeButton sizeToFit];
+		_closeButton = [[TTButton buttonWithStyle:@"closeButton:" title:nil] retain];		
+		_closeButton.frame = CGRectMake(0, 0, 30, 30);
 		[_closeButton addTarget:self action:@selector(closeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 		_closeButton.hidden = YES;
 		

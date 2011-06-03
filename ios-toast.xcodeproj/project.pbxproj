@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070B9AB013989345002A39B9 /* close_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 070B9AAD13989345002A39B9 /* close_selected.png */; };
+		070B9AB113989345002A39B9 /* close_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 070B9AAE13989345002A39B9 /* close_selected@2x.png */; };
+		070B9AB213989345002A39B9 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 070B9AAF13989345002A39B9 /* close.png */; };
+		070B9ABB1398934E002A39B9 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 070B9ABA1398934E002A39B9 /* close@2x.png */; };
 		075A8305138A384100B37536 /* ToastStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8300138A384100B37536 /* ToastStyle.m */; };
 		075A8306138A384100B37536 /* ToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8302138A384100B37536 /* ToastManager.m */; };
 		075A8307138A384100B37536 /* ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A8303138A384100B37536 /* ToastMessage.m */; };
@@ -178,6 +182,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		070B9AAD13989345002A39B9 /* close_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_selected.png; sourceTree = "<group>"; };
+		070B9AAE13989345002A39B9 /* close_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_selected@2x.png"; sourceTree = "<group>"; };
+		070B9AAF13989345002A39B9 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		070B9ABA1398934E002A39B9 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		075A82FF138A384100B37536 /* ToastStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToastStyle.h; path = Classes/ToastStyle.h; sourceTree = "<group>"; };
 		075A8300138A384100B37536 /* ToastStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToastStyle.m; path = Classes/ToastStyle.m; sourceTree = "<group>"; };
 		075A8301138A384100B37536 /* ToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToastManager.h; path = Classes/ToastManager.h; sourceTree = "<group>"; };
@@ -294,6 +302,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				070B9AAF13989345002A39B9 /* close.png */,
+				070B9ABA1398934E002A39B9 /* close@2x.png */,
+				070B9AAD13989345002A39B9 /* close_selected.png */,
+				070B9AAE13989345002A39B9 /* close_selected@2x.png */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				8D1107310486CEB800E47090 /* ios_toast-Info.plist */,
 			);
@@ -570,6 +582,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				320B6C86F11D9990244A9731 /* Three20.bundle in Resources */,
+				070B9AB013989345002A39B9 /* close_selected.png in Resources */,
+				070B9AB113989345002A39B9 /* close_selected@2x.png in Resources */,
+				070B9AB213989345002A39B9 /* close.png in Resources */,
+				070B9ABB1398934E002A39B9 /* close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
