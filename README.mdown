@@ -6,7 +6,7 @@ ios-toast is a library that is meant to replicate the toast functionality of Goo
 Adding to your project
 ======================
 
-ios-toast is dependent on Facebook's Three20. If you haven't installed three20 into your project already, see http://three20.info . ios-toast also depends on a style being added to the global style sheet, found in ToastStyle.m. Make sure you copy this to your global style sheet if you have already defined it. I recommend ToastManager be implemented as a singleton or static class. 
+ios-toast is dependent on Facebook's Three20. I have added three20 as a dependent submodule. If you haven't installed three20 into your project already, see http://three20.info . ios-toast also depends on a style being added to the global style sheet, found in ToastStyle.m. Make sure you copy this to your global style sheet if you have already defined it. I recommend ToastManager be implemented as a singleton or static class. 
 
 What it looks like
 ==================
