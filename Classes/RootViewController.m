@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
 		
 	self.title = @"Toast Test";
+	self.view.backgroundColor = [UIColor lightGrayColor];
 	
 	_toastManager = [[ToastManager alloc] init];
 	

@@ -41,7 +41,7 @@ static CGFloat kMaxWidth         = 320;
 		self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 		_bezelView = [[TTView alloc] init];
 		_bezelView.backgroundColor = [UIColor clearColor];
-		_bezelView.style = TTSTYLE(blackBezel);
+		_bezelView.style = TTSTYLE(toastBezel);
 		_bezelView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		self.backgroundColor = [UIColor clearColor];
 		
@@ -52,7 +52,7 @@ static CGFloat kMaxWidth         = 320;
 		_label.font = [UIFont systemFontOfSize:13];
 		_label.textColor = [UIColor whiteColor];
 		_label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
-		_label.shadowOffset = CGSizeMake(1, 1);
+		_label.shadowOffset = CGSizeMake(2, 2);
 		
 		_closeButton = [[TTButton buttonWithStyle:@"closeButton:" title:nil] retain];		
 		_closeButton.frame = CGRectMake(0, 0, 30, 30);
@@ -130,7 +130,7 @@ static CGFloat kMaxWidth         = 320;
 							  textWidth, textSize.height);	
 	
 	NSLog(@"Label frame is %@",NSStringFromCGRect(_label.frame));
-
+	
 	if (_sticky)
 	{
 		_activityIndicator.hidden = NO;
@@ -186,6 +186,22 @@ static CGFloat kMaxWidth         = 320;
 - (BOOL) isClosing
 {
 	return _closing;
+}
+- (void) setVisible:(BOOL)b
+{
+	_visible = b;
+}
+- (BOOL) isVisible
+{
+	return _visible;
+}
+- (void) setShouldClose:(BOOL)b
+{
+	_shouldClose = b;
+}
+- (BOOL) isShouldClose
+{
+	return _shouldClose;
 }
 
 @end

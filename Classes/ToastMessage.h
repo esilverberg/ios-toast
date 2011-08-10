@@ -26,6 +26,8 @@
 	NSInteger				  _code;
 	BOOL					  _sticky;
 	BOOL					  _closing;
+	BOOL					  _visible;
+	BOOL					  _shouldClose;
 	TTView*                   _bezelView;
 	UILabel*                  _label;
 	TTButton *				  _closeButton;
@@ -37,6 +39,8 @@
 @property (nonatomic) NSInteger code;
 @property (nonatomic, getter=isSticky) BOOL sticky;
 @property (nonatomic, getter=isClosing) BOOL closing;
+@property (nonatomic, getter=isVisible) BOOL visible;
+@property (nonatomic, getter=isShouldClose) BOOL shouldClose;
 @property (nonatomic, assign)   NSString* text;
 @property (nonatomic, assign) id<ToastCloseDelegate> delegate;
 

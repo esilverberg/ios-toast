@@ -24,6 +24,16 @@
 
 @implementation ToastStyle
 
+- (TTStyle*)toastBezel {
+	return
+    [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:10] next:
+	 [TTSolidBorderStyle styleWithColor:RGBACOLOR(255,255,255,0.6) width:4 next:
+	  [TTLinearGradientFillStyle 
+	   styleWithColor1:RGBACOLOR(51, 51, 51, 0.95)
+	   color2:RGBACOLOR(0, 0, 0, 0.95)
+	   next:nil]]];
+}
+
 - (TTStyle*)closeButton:(UIControlState)state {	
 	NSString *imageUrl = (state == UIControlStateHighlighted) ? @"bundle://close_selected.png" : @"bundle://close.png";	
 	UIImage* image = TTIMAGE(imageUrl);
