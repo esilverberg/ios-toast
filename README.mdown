@@ -10,8 +10,8 @@ ios-toast is dependent on Facebook's Three20. I have added three20 as a dependen
 
 What it looks like
 ==================
-![example toast1](https://github.com/esilverberg/ios-toast/blob/master/screenshot1.png)
-![example toast2](https://github.com/esilverberg/ios-toast/blob/master/screenshot2.png)
+![example toast1](https://github.com/esilverberg/ios-toast/blob/master/screenshot1.png?raw=true)
+![example toast2](https://github.com/esilverberg/ios-toast/blob/master/screenshot2.png?raw=true)
 
 Other options
 =============
